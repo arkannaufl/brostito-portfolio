@@ -60,5 +60,4 @@ cd brostito-portfolio</code></pre>
 <div align="center">
 	<i>Feel free to contribute or open issues for improvements!</i>
 </div>
----
-Feel free to contribute or open issues for improvements!
+
