@@ -1,14 +1,3 @@
-
-<div align="center">
-	<img src="public/favicon.ico" alt="Brostito Logo" width="80" />
-  
-	<h1>Brostito Portfolio 🚀</h1>
-	<p><strong>A modern, clean, and responsive portfolio website for Brostito Antares</strong></p>
-	<p>Developed by <b>Arkan Naufal Ardhani</b></p>
-</div>
-
----
-
 ## 📝 Overview
 This project showcases the professional profile, works, and contact information of Brostito Antares. Built with a focus on user experience, performance, and maintainability.
 
