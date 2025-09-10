@@ -4,12 +4,28 @@
   --font-sans: "Inter";
 }
 
+/* Force light mode */
+* {
+  color-scheme: light;
+}
+
 html,
 body {
-  @apply bg-white dark:bg-gray-950;
+  @apply bg-white;
   font-family: "Inter" !important;
+  color-scheme: light;
+}
 
-  @media (prefers-color-scheme: dark) {
-    color-scheme: dark;
+/* Custom animations */
+@keyframes scroll {
+  0% {
+    transform: translateX(0);
   }
+  100% {
+    transform: translateX(-50%);
+  }
+}
+
+.animate-scroll {
+  animation: scroll 20s linear infinite;
 }
