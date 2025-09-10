@@ -21,9 +21,12 @@ export default function About() {
         const deltaX = e.clientX - centerX;
         const deltaY = e.clientY - centerY;
         
-        const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+        // Calculate 3D rotation angles
+        const rotateX = (deltaY / rect.height) * 30; // Max 30 degrees
+        const rotateY = (deltaX / rect.width) * 30;  // Max 30 degrees
         
-        starRef.current.style.transform = `rotate(${angle}deg)`;
+        // Apply 3D rotation with perspective and default rotation
+        starRef.current.style.transform = `perspective(1000px) rotateX(${-rotateX}deg) rotateY(${rotateY}deg)`;
       }
     };
 
@@ -429,6 +432,11 @@ export default function About() {
                 <div 
                   ref={starRef}
                   className="transition-transform duration-200 ease-out"
+                  style={{ 
+                    transformStyle: 'preserve-3d',
+                    transformOrigin: 'center center',
+                    transform: 'perspective(1000px) rotateX(0deg) rotateY(0deg)'
+                  }}
                 >
                   <img src="/assets/big-star-icon.svg" alt="Star Icon" className="w-64 h-64 lg:w-120 lg:h-120" />
                 </div>
