@@ -19,6 +19,14 @@ export function Navbar() {
     return false;
   };
 
+  const getWorksLink = () => {
+    return location.pathname === "/" ? "#projects" : "/#projects";
+  };
+
+  const getContactLink = () => {
+    return location.pathname === "/" ? "#contact" : "/#contact";
+  };
+
   return (
     <nav className="bg-white border-b border-gray-200">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -27,11 +35,11 @@ export function Navbar() {
           <div className="flex items-center">
             <Link to="/" className="flex items-center space-x-3" onClick={closeMenu}>
               {/* Logo Icon */}
-              <div className="w-8 h-8 relative">
+              <div className="relative">
                 <img
                   src="/assets/main-star-icon.svg"
                   alt="Main Star Icon"
-                  className="w-10 h-10"
+                  className="w-9 h-9"
                 />
               </div>
               {/* Brand Name */}
@@ -43,7 +51,7 @@ export function Navbar() {
 
           {/* Desktop Navigation Menu */}
           <div className="hidden md:block">
-            <div className="ml-10 flex items-baseline space-x-8">
+            <div className="ml-10 flex items-baseline space-x-4">
               <Link
                 to="/"
                 className={`px-3 py-2 text-sm font-medium transition-colors ${
@@ -64,26 +72,18 @@ export function Navbar() {
               >
                 About Me
               </Link>
-              <Link
-                to="/works"
-                className={`px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive("/works") 
-                    ? "text-gray-800" 
-                    : "text-[#C7C7C7] hover:text-[#888888]"
-                }`}
+              <a
+                href={getWorksLink()}
+                className="px-3 py-2 text-sm font-medium transition-colors text-[#C7C7C7] hover:text-[#888888]"
               >
                 Works
-              </Link>
-              <Link
-                to="/contact"
-                className={`px-3 py-2 text-sm font-medium transition-colors ${
-                  isActive("/contact") 
-                    ? "text-gray-800" 
-                    : "text-[#C7C7C7] hover:text-[#888888]"
-                }`}
+              </a>
+              <a
+                href={getContactLink()}
+                className="px-3 py-2 text-sm font-medium transition-colors text-[#C7C7C7] hover:text-[#888888]"
               >
                 Contact
-              </Link>
+              </a>
             </div>
           </div>
 
@@ -135,28 +135,20 @@ export function Navbar() {
             >
               About Me
             </Link>
-            <Link
-              to="/works"
-              className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
-                isActive("/works") 
-                  ? "text-gray-800 bg-gray-50" 
-                  : "text-[#C7C7C7] hover:text-[#888888] hover:bg-gray-50"
-              }`}
+            <a
+              href={getWorksLink()}
+              className="block px-3 py-2 text-base font-medium rounded-md transition-colors text-[#C7C7C7] hover:text-[#888888] hover:bg-gray-50"
               onClick={closeMenu}
             >
               Works
-            </Link>
-            <Link
-              to="/contact"
-              className={`block px-3 py-2 text-base font-medium rounded-md transition-colors ${
-                isActive("/contact") 
-                  ? "text-gray-800 bg-gray-50" 
-                  : "text-[#C7C7C7] hover:text-[#888888] hover:bg-gray-50"
-              }`}
+            </a>
+            <a
+              href={getContactLink()}
+              className="block px-3 py-2 text-base font-medium rounded-md transition-colors text-[#C7C7C7] hover:text-[#888888] hover:bg-gray-50"
               onClick={closeMenu}
             >
               Contact
-            </Link>
+            </a>
           </div>
         </div>
       </div>
