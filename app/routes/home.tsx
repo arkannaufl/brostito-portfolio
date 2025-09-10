@@ -1,4 +1,5 @@
 import type { Route } from "./+types/home";
+import { useEffect, useRef } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,6 +9,30 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function Home() {
+  const starRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (starRef.current) {
+        const rect = starRef.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const deltaX = e.clientX - centerX;
+        const deltaY = e.clientY - centerY;
+        
+        const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+        
+        starRef.current.style.transform = `rotate(${angle}deg)`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
   return (
     <main className="pt-16 bg-white">
       {/* Hero Section */}
@@ -148,8 +173,8 @@ export default function Home() {
                 className="w-full h-auto rounded-lg transition-transform duration-500 group-hover:scale-105"
               />
             </div>
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#000000] via-[#000000]/80 to-transparent p-6 lg:p-10 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out transform translate-y-4 group-hover:translate-y-0">
-              <div className="transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#000000] via-[#000000]/80 to-transparent p-6 lg:p-10 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-in-out transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
+              <div className="transform translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0 transition-transform duration-500 delay-100">
                 <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-1">
                   Healty In : Hospital Management System Dashboard
                 </h3>
@@ -165,8 +190,8 @@ export default function Home() {
               alt="Drivo One Stop Solution for Vehicle & Transportation Needs" 
               className="h-auto w-3/5 mt-10 sm:mt-0 sm:w-2/3 lg:w-2/4 transition-transform duration-500 group-hover:scale-105"
             />
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#000000] via-[#000000]/80 to-transparent p-6 lg:p-10 h-60 lg:h-80 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out transform translate-y-4 group-hover:translate-y-0">
-              <div className="absolute bottom-6 lg:bottom-10 left-6 lg:left-10 right-0 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#000000] via-[#000000]/80 to-transparent p-6 lg:p-10 h-60 lg:h-80 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-in-out transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
+              <div className="absolute bottom-6 lg:bottom-10 left-6 lg:left-10 right-0 transform translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0 transition-transform duration-500 delay-100">
                 <h3 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-1">
                   Drivo : One Stop Solution for Vechile & Transpotations Needs
                 </h3>
@@ -178,7 +203,7 @@ export default function Home() {
       </div>
 
       {/* Explore My Offerings Section */}
-      <div className="max-w-7xl mx-auto py-20 px-6" data-aos="fade-up" data-aos-delay="450">
+      <div className="max-w-7xl mx-auto mb-20 px-6" data-aos="fade-up" data-aos-delay="450">
         <div className="text-center mb-16" data-aos="fade-up" data-aos-delay="500">
           <h2 className="text-4xl lg:text-5xl font-medium mb-6">
             <span className="text-[#363636]">Explore</span> <span className="text-[#B3B4BB]">My Offerings</span> <span className="text-[#363636]">for You</span>
@@ -303,9 +328,9 @@ export default function Home() {
           {/* Main Project Visual */}
           <div className="rounded-2xl overflow-hidden relative group cursor-pointer">
             <img src="/assets/inovative-smart-web.png" alt="IDN Boarding School" className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105" />
-            {/* Gradient Overlay - Hidden by default, shown on hover */}
-            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#000000] via-[#363636]/80 to-transparent p-6 lg:p-10 h-52 sm:h-80 md:h-96 lg:h-130 opacity-0 group-hover:opacity-100 transition-all duration-500 ease-in-out transform translate-y-4 group-hover:translate-y-0">
-              <div className="absolute bottom-6 lg:bottom-10 left-6 lg:left-10 right-0 transform translate-y-2 group-hover:translate-y-0 transition-transform duration-500 delay-100">
+            {/* Gradient Overlay - Always visible on mobile, hover on desktop */}
+            <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-[#000000] via-[#363636]/80 to-transparent p-6 lg:p-10 h-52 sm:h-80 md:h-96 lg:h-130 opacity-100 lg:opacity-0 lg:group-hover:opacity-100 transition-all duration-500 ease-in-out transform translate-y-0 lg:translate-y-4 lg:group-hover:translate-y-0">
+              <div className="absolute bottom-6 lg:bottom-10 left-6 lg:left-10 right-0 transform translate-y-0 lg:translate-y-2 lg:group-hover:translate-y-0 transition-transform duration-500 delay-100">
                 <h4 className="text-lg sm:text-xl lg:text-2xl font-semibold text-white mb-1">News : Innovative News Website Smart</h4>
                 <p className="text-gray-300 text-sm lg:text-base">Work 2025</p>
               </div>
@@ -464,7 +489,12 @@ export default function Home() {
             {/* Right Side - Graphic Element */}
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
-                <img src="/assets/big-star-icon.svg" alt="Star Icon" className="w-64 h-64 lg:w-120 lg:h-120" />
+                <div 
+                  ref={starRef}
+                  className="transition-transform duration-200 ease-out"
+                >
+                  <img src="/assets/big-star-icon.svg" alt="Star Icon" className="w-64 h-64 lg:w-120 lg:h-120" />
+                </div>
               </div>
             </div>
           </div>

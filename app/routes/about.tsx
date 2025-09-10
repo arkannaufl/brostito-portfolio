@@ -1,4 +1,5 @@
 import type { Route } from "./+types/about";
+import { useEffect, useRef } from "react";
 
 export function meta({}: Route.MetaArgs) {
   return [
@@ -8,6 +9,30 @@ export function meta({}: Route.MetaArgs) {
 }
 
 export default function About() {
+  const starRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleMouseMove = (e: MouseEvent) => {
+      if (starRef.current) {
+        const rect = starRef.current.getBoundingClientRect();
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        const deltaX = e.clientX - centerX;
+        const deltaY = e.clientY - centerY;
+        
+        const angle = Math.atan2(deltaY, deltaX) * (180 / Math.PI);
+        
+        starRef.current.style.transform = `rotate(${angle}deg)`;
+      }
+    };
+
+    window.addEventListener('mousemove', handleMouseMove);
+    
+    return () => {
+      window.removeEventListener('mousemove', handleMouseMove);
+    };
+  }, []);
   return (
     <main className="pt-16 bg-white">
       {/* Hero Section */}
@@ -401,7 +426,12 @@ export default function About() {
             {/* Right Side - Graphic Element */}
             <div className="flex justify-center lg:justify-end">
               <div className="relative">
-                <img src="/assets/big-star-icon.svg" alt="Star Icon" className="w-64 h-64 lg:w-120 lg:h-120" />
+                <div 
+                  ref={starRef}
+                  className="transition-transform duration-200 ease-out"
+                >
+                  <img src="/assets/big-star-icon.svg" alt="Star Icon" className="w-64 h-64 lg:w-120 lg:h-120" />
+                </div>
               </div>
             </div>
           </div>
