@@ -1,75 +1,87 @@
+# Welcome to React Router!
 
-<div align="center">
-	<img src="public/favicon.ico" alt="Brostito Logo" width="80" />
-  
-	<h1>Brostito Portfolio 🚀</h1>
-	<p><strong>A modern, clean, and responsive portfolio website for Brostito Antares</strong></p>
-	<p>Developed by <b>Arkan Naufal Ardhani</b></p>
-</div>
+A modern, production-ready template for building full-stack React applications using React Router.
+
+[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/remix-run/react-router-templates/tree/main/default)
+
+## Features
+
+- 🚀 Server-side rendering
+- ⚡️ Hot Module Replacement (HMR)
+- 📦 Asset bundling and optimization
+- 🔄 Data loading and mutations
+- 🔒 TypeScript by default
+- 🎉 TailwindCSS for styling
+- 📖 [React Router docs](https://reactrouter.com/)
+
+## Getting Started
+
+### Installation
+
+Install the dependencies:
+
+```bash
+npm install
+```
+
+### Development
+
+Start the development server with HMR:
+
+```bash
+npm run dev
+```
+
+Your application will be available at `http://localhost:5173`.
+
+## Building for Production
+
+Create a production build:
+
+```bash
+npm run build
+```
+
+## Deployment
+
+### Docker Deployment
+
+To build and run using Docker:
+
+```bash
+docker build -t my-app .
+
+# Run the container
+docker run -p 3000:3000 my-app
+```
+
+The containerized application can be deployed to any platform that supports Docker, including:
+
+- AWS ECS
+- Google Cloud Run
+- Azure Container Apps
+- Digital Ocean App Platform
+- Fly.io
+- Railway
+
+### DIY Deployment
+
+If you're familiar with deploying Node applications, the built-in app server is production-ready.
+
+Make sure to deploy the output of `npm run build`
+
+```
+├── package.json
+├── package-lock.json (or pnpm-lock.yaml, or bun.lockb)
+├── build/
+│   ├── client/    # Static assets
+│   └── server/    # Server-side code
+```
+
+## Styling
+
+This template comes with [Tailwind CSS](https://tailwindcss.com/) already configured for a simple default starting experience. You can use whatever CSS framework you prefer.
 
 ---
 
-## 📝 Overview
-This project showcases the professional profile, works, and contact information of Brostito Antares. Built with a focus on user experience, performance, and maintainability.
-
-## ⚙️ Technologies Used
-
-<ul>
-	<li><b>React</b> — Component-based UI development</li>
-	<li><b>Vite</b> — Fast build tool and development server</li>
-	<li><b>TypeScript</b> — Type-safe JavaScript</li>
-	<li><b>Tailwind CSS</b> — Utility-first CSS framework for rapid styling</li>
-	<li><b>React Router</b> — Client-side routing</li>
-	<li><b>Docker</b> — Containerization for deployment</li>
-</ul>
-
-## ✨ Features
-
-- Clean and modern design
-- Fully responsive (mobile, tablet, desktop)
-- User-friendly navigation
-- Fast load times
-- Easy to maintain and extend
-- Asset management for images and icons
-
-## 🚦 Getting Started
-
-To run this portfolio project locally setelah clone dari repo, ikuti langkah-langkah berikut:
-
-<ol>
-	<li><b>Clone repository</b>
-		<pre><code>git clone https://github.com/arkannaufl/brostito-portfolio.git
-cd brostito-portfolio</code></pre>
-	</li>
-	<li><b>Install dependencies</b>
-		<pre><code>npm install</code></pre>
-	</li>
-	<li><b>Jalankan development server</b>
-		<pre><code>npm run dev</code></pre>
-	</li>
-	<li><b>Akses aplikasi</b>
-		<br>Buka browser dan akses <a href="http://localhost:5173">http://localhost:5173</a>
-	</li>
-</ol>
-
----
-**Catatan:**
-- Pastikan sudah terinstall Node.js dan npm di komputer Anda.
-- Untuk build production, gunakan perintah <code>npm run build</code>.
-- Untuk menjalankan dengan Docker, lihat bagian Deployment di bawah.
-
-## 🚀 Deployment
-
-- Ready for deployment with Docker or any static hosting provider.
-
-## 👤 Credits
-
-- <b>Client:</b> Brostito Antares
-- <b>Developer:</b> Arkan Naufal Ardhani
-
----
-<div align="center">
-	<i>Feel free to contribute or open issues for improvements!</i>
-</div>
----
-Feel free to contribute or open issues for improvements!
+Built with ❤️ using React Router.
